@@ -48,6 +48,16 @@ describe Hero do
 		expect(hero.health).to eq(8)
 	end
 
+	describe "flee state" do
+		it "doesn't flee by default" do
+			expect(hero.fled?).to be false
+		end
+		it "flees from battle" do
+			hero.flee
+			expect(hero.fled?).to be true
+		end
+	end
+
 	describe "attack attack" do
 		let(:attack_action) { double("attack_action") }
 		let(:hero) {Hero.new actions: {attack: attack_action} } 
@@ -58,7 +68,8 @@ describe Hero do
 
 		it "activates attack action" do
 			monster = double("monster")
-			attack_action.should_receive(:activate)
+			# deprecated attack_action.should_receive(:activate)
+			expect(attack_action).to receive(:activate)
 			hero.activate_action :attack, monster
 		end
 

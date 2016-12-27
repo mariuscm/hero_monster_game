@@ -1,12 +1,24 @@
 class Hero
-	attr_reader :strength, :health, :actions, :gold, :experience
+	attr_reader :strength, :health, :actions, :gold, :experience, :stealth
 
 	def initialize(attr = {})
 		@strength = attr.fetch(:strength, 3)
 		@health = attr.fetch(:health, 10)
 		@actions = attr.fetch(:actions, {})
+		@stealth = attr.fetch(:stealth, 1)
+
 		@gold = 0
 		@experience = 0
+		
+		@fled = false
+	end
+
+	def fled?
+		@fled
+	end
+
+	def flee
+		@fled = true
 	end
 
 	def activate_action(action_name, target)
