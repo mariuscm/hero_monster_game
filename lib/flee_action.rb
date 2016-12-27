@@ -16,10 +16,8 @@ class FleeAction
 
 end
 
-def success(target)
-	target.kill
-	owner.gain_exp
-	owner.gain_gold
+def success(target)	
+	owner.flee
 end
 
 def failure(target)
