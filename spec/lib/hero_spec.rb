@@ -9,6 +9,9 @@ describe Hero do
 		it "has default strength equal to 3" do
 			expect(hero.strength).to eq(3)
 		end
+		it "has default stealth equal to 1" do
+			expect(hero.stealth).to eq(1)
+		end
 		it "has default health equal to 10" do
 			expect(hero.health).to eq(10)
 		end
