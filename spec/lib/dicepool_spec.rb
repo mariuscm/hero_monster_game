@@ -1,0 +1,18 @@
+require 'spec_helper'
+require 'dicepool'
+
+describe Dicepool do
+	describe "skill_check" do
+		it "returns true if number of successes is more than difficulty" do
+			dicepool= Dicepool.new
+			#deprecated dicepool.stub(:roll_die).and_return(5)
+			allow(dicepool).to receive(:roll_die).and_return(5)
+			expect(dicepool.skill_check(3,2)).to be_truthy
+		end
+		it "returns false if number of successes is less than difficulty" do
+			dicepool= Dicepool.new
+			allow(dicepool).to receive(:roll_die).and_return(2)
+			expect(dicepool.skill_check(3,2)).to be_falsey
+		end
+	end
+end
